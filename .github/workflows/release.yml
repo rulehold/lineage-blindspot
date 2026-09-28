@@ -14,11 +14,11 @@ jobs:
         with:
           persist-credentials: false
       - name: Verify checksum
-        run: cd data && sha256sum -c summary.json.sha256
+        run: cd data && sha256sum -c summary.json.sha256 breakdown.json.sha256
       - name: Release notes for this tag
         run: awk -v t="## $GITHUB_REF_NAME " 'index($0, t) == 1 {f = 1; next} /^## / {f = 0} f' CHANGELOG.md > "$RUNNER_TEMP/notes.md" && test -s "$RUNNER_TEMP/notes.md"
       - name: Create release
-        run: gh release create "$GITHUB_REF_NAME" data/summary.json data/summary.json.sha256 blindspot-public.md --title "$GITHUB_REF_NAME" --notes-file "$RUNNER_TEMP/notes.md" --verify-tag
+        run: gh release create "$GITHUB_REF_NAME" data/summary.json data/summary.json.sha256 data/breakdown.json data/breakdown.json.sha256 blindspot-public.md --title "$GITHUB_REF_NAME" --notes-file "$RUNNER_TEMP/notes.md" --verify-tag
         env:
           GH_TOKEN: ${{ github.token }}
   labels:
@@ -46,8 +46,8 @@ jobs:
       - name: Stage dataset files
         run: |
           mkdir _hf
-          cp hf/README.md blindspot-public.md data/summary.json data/summary.json.sha256 _hf/
-          cd _hf && sha256sum -c summary.json.sha256
+          cp hf/README.md blindspot-public.md data/summary.json data/summary.json.sha256 data/breakdown.json data/breakdown.json.sha256 _hf/
+          cd _hf && sha256sum -c summary.json.sha256 breakdown.json.sha256
       - run: pip install "huggingface_hub==0.34.4"
       - name: Upload to Hugging Face
         run: python -c "import os; from huggingface_hub import upload_folder; upload_folder(repo_id='rulehold/lineage-blindspot-v0', repo_type='dataset', folder_path='_hf', commit_message=os.environ['GITHUB_REF_NAME'], token=os.environ['HF_TOKEN'])"

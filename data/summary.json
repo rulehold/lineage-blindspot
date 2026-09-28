@@ -81,17 +81,6 @@
         "high": 0.645602
       },
       "unknownOtherCnTokens": 2,
-      "split": {
-        "S_baselineJudged": {
-          "k": 14,
-          "n": 69,
-          "rate": 0.202899,
-          "low": 0.124893,
-          "high": 0.31224
-        },
-        "structureOnlyJudged": 30,
-        "structureOnlyBlind": 30
-      },
       "families": {
         "deepseek": 3,
         "gemma": 11,
@@ -174,17 +163,6 @@
         "high": 0.668214
       },
       "unknownOtherCnTokens": 0,
-      "split": {
-        "S_baselineJudged": {
-          "k": 17,
-          "n": 60,
-          "rate": 0.283333,
-          "low": 0.185068,
-          "high": 0.407673
-        },
-        "structureOnlyJudged": 6,
-        "structureOnlyBlind": 6
-      },
       "families": {
         "gemma": 4,
         "lfm": 1,
@@ -257,17 +235,6 @@
         "high": 0.524249
       },
       "unknownOtherCnTokens": 0,
-      "split": {
-        "S_baselineJudged": {
-          "k": 3,
-          "n": 12,
-          "rate": 0.25,
-          "low": 0.088942,
-          "high": 0.532305
-        },
-        "structureOnlyJudged": 6,
-        "structureOnlyBlind": 6
-      },
       "families": {
         "exaone": 1,
         "gemma": 2,
@@ -316,7 +283,6 @@
       },
       "S_noGguf": null,
       "unknownOtherCnTokens": 0,
-      "split": null,
       "families": {
         "deepseek": 40,
         "exaone": 20,
@@ -327,6 +293,7 @@
       }
     }
   ],
+  "withheld": [],
   "overlap": {
     "multiSample": 17,
     "byPair": {

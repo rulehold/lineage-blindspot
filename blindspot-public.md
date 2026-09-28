@@ -50,7 +50,56 @@
 | File | Content |
 |---|---|
 | `data/summary.json` | All aggregates above plus GGUF share, S without GGUF, inferred-family counts per sample, sample overlap |
-| `data/summary.json.sha256` | SHA-256 of the JSON |
+| `data/breakdown.json` | Breakdown tables by family and GGUF (v0.2.0) |
+| `*.sha256` | SHA-256 of each JSON |
+
+## Breakdown by family and GGUF (v0.2.0, snapshot `20260927T072129324Z`)
+
+- A cell is published only if it has at least 5 inferred models and its blind spots are neither none nor all of them (in the GGUF table, at least one fetched model must also be undetermined). Only cells with fewer than 5 inferred models are merged into "other"; if any larger cell or the merged "other" fails the rule, the whole table is left out. No value is hidden, so every table adds up to the sample total. Family cells count inferred models only, so M3 is not shown there.
+
+#### C — GGUF vs non-GGUF repositories
+
+| Cell | Fetched | Inferred | S (among inferred) | M3 |
+|---|---|---|---|---|
+| non-gguf | 134 | 93 | 54.8% (51/93, 95% 44.7–64.6%) | 30.6% (41/134, 95% 23.4–38.8%) |
+| gguf | 66 | 61 | 36.1% (22/61, 95% 25.2–48.6%) | 7.6% (5/66, 95% 3.3–16.5%) |
+
+- C: the table by inferred family is not published (its cells could not meet the rule).
+
+#### B1 — by inferred family
+
+| Cell | Fetched | Inferred | S (among inferred) | M3 |
+|---|---|---|---|---|
+| llama | — | 36 | 13.9% (5/36, 95% 6.1–28.7%) | — |
+| qwen | — | 18 | 44.4% (8/18, 95% 24.6–66.3%) | — |
+| mistral | — | 11 | 72.7% (8/11, 95% 43.4–90.3%) | — |
+| other (gemma, lfm) | — | 5 | 60.0% (3/5, 95% 23.1–88.2%) | — |
+
+#### B1 — GGUF vs non-GGUF repositories
+
+| Cell | Fetched | Inferred | S (among inferred) | M3 |
+|---|---|---|---|---|
+| gguf | 67 | 54 | 31.5% (17/54, 95% 20.7–44.7%) | 19.4% (13/67, 95% 11.7–30.4%) |
+| non-gguf | 33 | 16 | 43.8% (7/16, 95% 23.1–66.8%) | 51.5% (17/33, 95% 35.2–67.5%) |
+
+#### B2 — by inferred family
+
+| Cell | Fetched | Inferred | S (among inferred) | M3 |
+|---|---|---|---|---|
+| lfm | — | 38 | 21.1% (8/38, 95% 11.1–36.3%) | — |
+| qwen | — | 14 | 64.3% (9/14, 95% 38.8–83.7%) | — |
+| other (exaone, gemma, glm, granite, mistral, nemotron, phi) | — | 12 | 25.0% (3/12, 95% 8.9–53.2%) | — |
+
+#### B2 — GGUF vs non-GGUF repositories
+
+| Cell | Fetched | Inferred | S (among inferred) | M3 |
+|---|---|---|---|---|
+| non-gguf | 70 | 36 | 36.1% (13/36, 95% 22.5–52.4%) | 48.6% (34/70, 95% 37.2–60.0%) |
+| gguf | 30 | 28 | 25.0% (7/28, 95% 12.7–43.4%) | 6.7% (2/30, 95% 1.8–21.3%) |
+
+- Why the C family table is missing: at least one family cell with 5 or more inferred models failed the rule, so the whole table is left out (which cell is not disclosed).
+- `data/breakdown.json` holds the same tables. The GGUF table's S is also derivable from `S` and `S_noGguf` in `data/summary.json`; its new information is M3 per cell.
+- Future snapshots are compared with every earlier release: a sample whose membership or public metadata changed by 1–4 models is withheld entirely, and family tables and per-family counts are left out whenever anything changed.
 
 ## 한국어 요약
 
@@ -100,3 +149,51 @@
 2. 모델마다 `GET /api/models/<id>?blobs=true`(config 구조, `base_model`, safetensors 해시, GGUF 메타데이터)와 신고된 부모 한 단계. 순차, 요청 간격 1.1초 이상, HTTP 429가 3회 연속이면 중단, HTTP 200만 캐시. 이 스냅숏은 요청 398회.
 3. 공식 가중치 해시, 구조(강·약), 신고된 `base_model`, 저장소 이름의 계열 이름 토큰으로 모델별 계보를 추정하고, 이름·신고를 추정 계열과 대조해 M1·M2를 낸다.
 4. 표본별로 95% Wilson 구간과 함께 집계 → `data/summary.json`. 판정 엔진 자체는 이 저장소에 없다.
+
+## 계열·GGUF별 나눠 보기 (v0.2.0, 스냅숏 `20260927T072129324Z`)
+
+- 판정된 모델이 5개 이상이고 사각지대가 하나도 없거나 전부인 경우가 아닌 칸만 싣는다(GGUF 표는 확인 불가도 1개 이상이어야 한다). 판정 5개 미만 칸만 "기타"로 합치고, 더 큰 칸이나 합친 기타가 규칙을 못 맞추면 그 표 전체를 싣지 않는다. 가린 값이 없으므로 표마다 합계가 표본 합계와 같다. 계열 칸은 판정된 모델만 세므로 M3를 싣지 않는다.
+
+#### C — GGUF 저장소 여부별
+
+| 칸 | 조회 성공 | 판정 | S(판정된 모델 안) | M3 |
+|---|---|---|---|---|
+| non-gguf | 134 | 93 | 54.8% (51/93, 95% 44.7–64.6%) | 30.6% (41/134, 95% 23.4–38.8%) |
+| gguf | 66 | 61 | 36.1% (22/61, 95% 25.2–48.6%) | 7.6% (5/66, 95% 3.3–16.5%) |
+
+- C: 추정 계열별 표는 싣지 않는다(칸이 규칙을 만족하지 못함).
+
+#### B1 — 추정 계열별
+
+| 칸 | 조회 성공 | 판정 | S(판정된 모델 안) | M3 |
+|---|---|---|---|---|
+| llama | — | 36 | 13.9% (5/36, 95% 6.1–28.7%) | — |
+| qwen | — | 18 | 44.4% (8/18, 95% 24.6–66.3%) | — |
+| mistral | — | 11 | 72.7% (8/11, 95% 43.4–90.3%) | — |
+| 기타 (gemma, lfm) | — | 5 | 60.0% (3/5, 95% 23.1–88.2%) | — |
+
+#### B1 — GGUF 저장소 여부별
+
+| 칸 | 조회 성공 | 판정 | S(판정된 모델 안) | M3 |
+|---|---|---|---|---|
+| gguf | 67 | 54 | 31.5% (17/54, 95% 20.7–44.7%) | 19.4% (13/67, 95% 11.7–30.4%) |
+| non-gguf | 33 | 16 | 43.8% (7/16, 95% 23.1–66.8%) | 51.5% (17/33, 95% 35.2–67.5%) |
+
+#### B2 — 추정 계열별
+
+| 칸 | 조회 성공 | 판정 | S(판정된 모델 안) | M3 |
+|---|---|---|---|---|
+| lfm | — | 38 | 21.1% (8/38, 95% 11.1–36.3%) | — |
+| qwen | — | 14 | 64.3% (9/14, 95% 38.8–83.7%) | — |
+| 기타 (exaone, gemma, glm, granite, mistral, nemotron, phi) | — | 12 | 25.0% (3/12, 95% 8.9–53.2%) | — |
+
+#### B2 — GGUF 저장소 여부별
+
+| 칸 | 조회 성공 | 판정 | S(판정된 모델 안) | M3 |
+|---|---|---|---|---|
+| non-gguf | 70 | 36 | 36.1% (13/36, 95% 22.5–52.4%) | 48.6% (34/70, 95% 37.2–60.0%) |
+| gguf | 30 | 28 | 25.0% (7/28, 95% 12.7–43.4%) | 6.7% (2/30, 95% 1.8–21.3%) |
+
+- C 계열 표가 없는 이유: 판정 5개 이상인 계열 칸 가운데 적어도 하나가 규칙을 못 맞춰 표 전체를 뺐다(어느 칸인지는 밝히지 않는다).
+- 같은 표가 `data/breakdown.json`에 있다. GGUF 표의 S는 `data/summary.json`의 `S`·`S_noGguf`로도 계산되며, 새 정보는 칸별 M3다.
+- 다음 스냅숏부터는 이전 모든 판과 비교한다. 구성이나 공개 메타데이터가 1~4개 바뀐 표본은 통째로 싣지 않고, 바뀜이 있으면 계열 표와 계열별 수를 싣지 않는다.

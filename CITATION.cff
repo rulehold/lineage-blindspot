@@ -5,7 +5,7 @@ type: dataset
 authors:
   - name: Rulehold
     email: hello@rulehold.com
-version: 0.1.1
+version: 0.2.0
 date-released: 2026-09-28
 license: CC-BY-4.0
 repository-code: "https://github.com/rulehold/lineage-blindspot"

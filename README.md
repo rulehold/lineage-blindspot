@@ -14,8 +14,9 @@ Full tables, definitions, limitations and the reproduction procedure: [`blindspo
 | `blindspot-public.md` | Report (English, then Korean) |
 | `data/summary.json` | Aggregates per sample (counts, rates, 95% Wilson intervals, family counts) |
 | `data/summary.json.sha256` | Checksum |
+| `data/breakdown.json` (+ `.sha256`) | v0.2.0: S and M3 broken down by inferred family and by GGUF vs non-GGUF, under a small-cell rule that never hides single values |
 
-Release assets for each tag carry the same three files. The dataset is mirrored on Hugging Face: `rulehold/lineage-blindspot-v0`.
+Release assets for each tag carry the report and the data files. The dataset is mirrored on Hugging Face: `rulehold/lineage-blindspot-v0`.
 
 ### `data/summary.json` fields (per sample)
 | Field | Meaning |
@@ -24,22 +25,22 @@ Release assets for each tag carry the same three files. The dataset is mirrored 
 | `S`, `M1`, `M2`, `M3`, `M4` | `{k, n, rate, low, high}` — count, denominator, rate and 95% Wilson interval |
 | `populationS` | `{min, max, judgedShare}` — undetermined counted as none-to-all blind spots |
 | `ggufShare`, `S_noGguf` | GGUF share; S excluding GGUF repositories |
-| `split` | S among models already inferred by the v0 rule set; architecture-only inferences |
 | `families` | inferred-family counts |
 | `familiesCovered` (top level) | families the rule set can infer; others count as undetermined |
+| `withheld` (top level) | samples left out of this release under the snapshot-difference rule (empty in v0.2.0) |
 
 ## Method & limits
 Lineage is inferred from public metadata (weight-file hashes, architecture, declared `base_model`, name tokens). It is an estimate, not a compliance guarantee. One snapshot, popularity-biased samples, M4 is a lower bound. Details in the report.
 
 ## License
-Data and report: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — please cite "Rulehold, lineage-blindspot v0.1.1" (see [`CITATION.cff`](CITATION.cff)). Workflow code: MIT. See [`LICENSE`](LICENSE). Source metadata: Hugging Face public Hub API.
+Data and report: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — please cite "Rulehold, lineage-blindspot v0.2.0" (see [`CITATION.cff`](CITATION.cff)). Workflow code: MIT. See [`LICENSE`](LICENSE). Source metadata: Hugging Face public Hub API.
 
 ## Questions & requests
 Open an issue with one of the forms: sample request, question, or data correction. We do not publish or send verdicts for individual models.
 
 ## Updates
 Next snapshot is planned; changes are listed in [`CHANGELOG.md`](CHANGELOG.md).
-Contact: hello@rulehold.com · Updates: https://rulehold.com/?utm_source=gh-release&utm_medium=tool&utm_campaign=lineage-blindspot-v0.1.1
+Contact: hello@rulehold.com · Updates: https://rulehold.com/?utm_source=gh-release&utm_medium=tool&utm_campaign=lineage-blindspot-v0.2.0
 
 ## 한국어
 
@@ -51,8 +52,8 @@ Contact: hello@rulehold.com · Updates: https://rulehold.com/?utm_source=gh-rele
 
 표·정의·한계·재현 절차 전체: [`blindspot-public.md`](blindspot-public.md)(영어 뒤 한국어).
 
-- 파일: `blindspot-public.md`(보고서), `data/summary.json`(표본별 집계, 95% Wilson 구간), `data/summary.json.sha256`(체크섬). 태그마다 릴리스 자산으로 같은 세 파일을 올립니다. Hugging Face 데이터셋 `rulehold/lineage-blindspot-v0`에도 같은 파일이 있습니다.
+- 파일: `blindspot-public.md`(보고서), `data/summary.json`(표본별 집계, 95% Wilson 구간), `data/breakdown.json`(v0.2.0: 계열·GGUF별 나눠 보기, 작은 칸 규칙), 각 `.sha256`(체크섬). 태그마다 릴리스 자산으로 같은 파일을 올립니다. Hugging Face 데이터셋 `rulehold/lineage-blindspot-v0`에도 같은 파일이 있습니다.
 - 방법과 한계: 공개 메타데이터(가중치 해시, 구조, `base_model` 신고, 이름 토큰)로 추정한 값이며 규정 준수를 보증하지 않습니다. 시점 1회, 인기 편향 표본, M4는 하한입니다.
-- 라이선스: 데이터·보고서 CC BY 4.0("Rulehold, lineage-blindspot v0.1.1"으로 출처 표시, `CITATION.cff` 참고), 워크플로 코드 MIT. 원천 메타데이터: Hugging Face 공개 Hub API.
+- 라이선스: 데이터·보고서 CC BY 4.0("Rulehold, lineage-blindspot v0.2.0"으로 출처 표시, `CITATION.cff` 참고), 워크플로 코드 MIT. 원천 메타데이터: Hugging Face 공개 Hub API.
 - 문의·요청: GitHub 이슈 양식(표본 요청·질문·데이터 정정). 개별 모델 판정은 공개하거나 보내지 않습니다.
-- 연락: hello@rulehold.com · 소식 받기: https://rulehold.com/?utm_source=gh-release&utm_medium=tool&utm_campaign=lineage-blindspot-v0.1.1
+- 연락: hello@rulehold.com · 소식 받기: https://rulehold.com/?utm_source=gh-release&utm_medium=tool&utm_campaign=lineage-blindspot-v0.2.0

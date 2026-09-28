@@ -1,0 +1,295 @@
+{
+  "license": "SPDX-License-Identifier: CC-BY-4.0 · Copyright (c) 2026 Rulehold",
+  "snapshot": "20260927T072129324Z",
+  "minCell": 5,
+  "samples": [
+    {
+      "sample": "C",
+      "fetched": 200,
+      "judged": 154,
+      "axes": [
+        {
+          "axis": "gguf",
+          "basis": "fetched",
+          "cells": [
+            {
+              "key": "non-gguf",
+              "merged": [],
+              "fetched": 134,
+              "judged": 93,
+              "S": {
+                "k": 51,
+                "n": 93,
+                "rate": 0.548387,
+                "low": 0.447333,
+                "high": 0.645602
+              },
+              "M3": {
+                "k": 41,
+                "n": 134,
+                "rate": 0.30597,
+                "low": 0.234259,
+                "high": 0.388496
+              }
+            },
+            {
+              "key": "gguf",
+              "merged": [],
+              "fetched": 66,
+              "judged": 61,
+              "S": {
+                "k": 22,
+                "n": 61,
+                "rate": 0.360656,
+                "low": 0.251741,
+                "high": 0.486081
+              },
+              "M3": {
+                "k": 5,
+                "n": 66,
+                "rate": 0.075758,
+                "low": 0.032792,
+                "high": 0.165392
+              }
+            }
+          ]
+        }
+      ],
+      "omitted": [
+        "family"
+      ],
+      "withheld": false
+    },
+    {
+      "sample": "B1",
+      "fetched": 100,
+      "judged": 70,
+      "axes": [
+        {
+          "axis": "family",
+          "basis": "judged",
+          "cells": [
+            {
+              "key": "llama",
+              "merged": [],
+              "fetched": null,
+              "judged": 36,
+              "S": {
+                "k": 5,
+                "n": 36,
+                "rate": 0.138889,
+                "low": 0.060818,
+                "high": 0.286595
+              },
+              "M3": null
+            },
+            {
+              "key": "qwen",
+              "merged": [],
+              "fetched": null,
+              "judged": 18,
+              "S": {
+                "k": 8,
+                "n": 18,
+                "rate": 0.444444,
+                "low": 0.245595,
+                "high": 0.662836
+              },
+              "M3": null
+            },
+            {
+              "key": "mistral",
+              "merged": [],
+              "fetched": null,
+              "judged": 11,
+              "S": {
+                "k": 8,
+                "n": 11,
+                "rate": 0.727273,
+                "low": 0.434355,
+                "high": 0.902539
+              },
+              "M3": null
+            },
+            {
+              "key": "other",
+              "merged": [
+                "gemma",
+                "lfm"
+              ],
+              "fetched": null,
+              "judged": 5,
+              "S": {
+                "k": 3,
+                "n": 5,
+                "rate": 0.6,
+                "low": 0.230724,
+                "high": 0.882379
+              },
+              "M3": null
+            }
+          ]
+        },
+        {
+          "axis": "gguf",
+          "basis": "fetched",
+          "cells": [
+            {
+              "key": "gguf",
+              "merged": [],
+              "fetched": 67,
+              "judged": 54,
+              "S": {
+                "k": 17,
+                "n": 54,
+                "rate": 0.314815,
+                "low": 0.206793,
+                "high": 0.447434
+              },
+              "M3": {
+                "k": 13,
+                "n": 67,
+                "rate": 0.19403,
+                "low": 0.117052,
+                "high": 0.304191
+              }
+            },
+            {
+              "key": "non-gguf",
+              "merged": [],
+              "fetched": 33,
+              "judged": 16,
+              "S": {
+                "k": 7,
+                "n": 16,
+                "rate": 0.4375,
+                "low": 0.230987,
+                "high": 0.668214
+              },
+              "M3": {
+                "k": 17,
+                "n": 33,
+                "rate": 0.515152,
+                "low": 0.352184,
+                "high": 0.67496
+              }
+            }
+          ]
+        }
+      ],
+      "omitted": [],
+      "withheld": false
+    },
+    {
+      "sample": "B2",
+      "fetched": 100,
+      "judged": 64,
+      "axes": [
+        {
+          "axis": "family",
+          "basis": "judged",
+          "cells": [
+            {
+              "key": "lfm",
+              "merged": [],
+              "fetched": null,
+              "judged": 38,
+              "S": {
+                "k": 8,
+                "n": 38,
+                "rate": 0.210526,
+                "low": 0.110748,
+                "high": 0.363458
+              },
+              "M3": null
+            },
+            {
+              "key": "qwen",
+              "merged": [],
+              "fetched": null,
+              "judged": 14,
+              "S": {
+                "k": 9,
+                "n": 14,
+                "rate": 0.642857,
+                "low": 0.387644,
+                "high": 0.836553
+              },
+              "M3": null
+            },
+            {
+              "key": "other",
+              "merged": [
+                "exaone",
+                "gemma",
+                "glm",
+                "granite",
+                "mistral",
+                "nemotron",
+                "phi"
+              ],
+              "fetched": null,
+              "judged": 12,
+              "S": {
+                "k": 3,
+                "n": 12,
+                "rate": 0.25,
+                "low": 0.088942,
+                "high": 0.532305
+              },
+              "M3": null
+            }
+          ]
+        },
+        {
+          "axis": "gguf",
+          "basis": "fetched",
+          "cells": [
+            {
+              "key": "non-gguf",
+              "merged": [],
+              "fetched": 70,
+              "judged": 36,
+              "S": {
+                "k": 13,
+                "n": 36,
+                "rate": 0.361111,
+                "low": 0.224756,
+                "high": 0.524249
+              },
+              "M3": {
+                "k": 34,
+                "n": 70,
+                "rate": 0.485714,
+                "low": 0.372459,
+                "high": 0.600456
+              }
+            },
+            {
+              "key": "gguf",
+              "merged": [],
+              "fetched": 30,
+              "judged": 28,
+              "S": {
+                "k": 7,
+                "n": 28,
+                "rate": 0.25,
+                "low": 0.126765,
+                "high": 0.433557
+              },
+              "M3": {
+                "k": 2,
+                "n": 30,
+                "rate": 0.066667,
+                "low": 0.018477,
+                "high": 0.213235
+              }
+            }
+          ]
+        }
+      ],
+      "omitted": [],
+      "withheld": false
+    }
+  ]
+}
