@@ -1,0 +1,337 @@
+{
+  "license": "SPDX-License-Identifier: CC-BY-4.0 · Copyright (c) 2026 Rulehold",
+  "snapshot": "20260927T072129324Z",
+  "snapshotTakenAt": "2026-09-27T07:21:29Z",
+  "source": "Hugging Face public Hub API (unauthenticated)",
+  "ruleSet": "v1",
+  "familiesCovered": [
+    "deepseek",
+    "qwen",
+    "llama",
+    "mistral",
+    "gemma",
+    "exaone",
+    "glm",
+    "minimax",
+    "kimi",
+    "nemotron",
+    "gpt-oss",
+    "phi",
+    "smollm",
+    "lfm",
+    "granite",
+    "olmo"
+  ],
+  "samples": [
+    {
+      "sample": "C",
+      "models": 200,
+      "unmatched": 0,
+      "fetchedOk": 200,
+      "judged": 154,
+      "unknown": 46,
+      "S": {
+        "k": 73,
+        "n": 154,
+        "rate": 0.474026,
+        "low": 0.396759,
+        "high": 0.552558
+      },
+      "populationS": {
+        "min": 0.365,
+        "max": 0.595,
+        "judgedShare": 0.77
+      },
+      "M1": {
+        "k": 43,
+        "n": 154,
+        "rate": 0.279221,
+        "low": 0.214402,
+        "high": 0.354786
+      },
+      "M2": {
+        "k": 56,
+        "n": 154,
+        "rate": 0.363636,
+        "low": 0.291836,
+        "high": 0.442074
+      },
+      "M2missing": 55,
+      "M2mismatch": 1,
+      "M3": {
+        "k": 46,
+        "n": 200,
+        "rate": 0.23,
+        "low": 0.177093,
+        "high": 0.293083
+      },
+      "M4": null,
+      "ggufShare": {
+        "k": 66,
+        "n": 200,
+        "rate": 0.33,
+        "low": 0.268574,
+        "high": 0.397833
+      },
+      "S_noGguf": {
+        "k": 51,
+        "n": 93,
+        "rate": 0.548387,
+        "low": 0.447333,
+        "high": 0.645602
+      },
+      "unknownOtherCnTokens": 2,
+      "split": {
+        "S_baselineJudged": {
+          "k": 14,
+          "n": 69,
+          "rate": 0.202899,
+          "low": 0.124893,
+          "high": 0.31224
+        },
+        "structureOnlyJudged": 30,
+        "structureOnlyBlind": 30
+      },
+      "families": {
+        "deepseek": 3,
+        "gemma": 11,
+        "glm": 9,
+        "gpt-oss": 4,
+        "granite": 5,
+        "kimi": 1,
+        "lfm": 4,
+        "llama": 8,
+        "minimax": 3,
+        "mistral": 1,
+        "nemotron": 10,
+        "olmo": 2,
+        "phi": 5,
+        "qwen": 81,
+        "smollm": 7
+      }
+    },
+    {
+      "sample": "B1",
+      "models": 100,
+      "unmatched": 0,
+      "fetchedOk": 100,
+      "judged": 70,
+      "unknown": 30,
+      "S": {
+        "k": 24,
+        "n": 70,
+        "rate": 0.342857,
+        "low": 0.24246,
+        "high": 0.459605
+      },
+      "populationS": {
+        "min": 0.24,
+        "max": 0.54,
+        "judgedShare": 0.7
+      },
+      "M1": {
+        "k": 23,
+        "n": 70,
+        "rate": 0.328571,
+        "low": 0.229989,
+        "high": 0.444991
+      },
+      "M2": {
+        "k": 6,
+        "n": 70,
+        "rate": 0.085714,
+        "low": 0.039877,
+        "high": 0.174657
+      },
+      "M2missing": 5,
+      "M2mismatch": 1,
+      "M3": {
+        "k": 30,
+        "n": 100,
+        "rate": 0.3,
+        "low": 0.218949,
+        "high": 0.395849
+      },
+      "M4": {
+        "k": 18,
+        "n": 100,
+        "rate": 0.18,
+        "low": 0.117002,
+        "high": 0.266674
+      },
+      "ggufShare": {
+        "k": 67,
+        "n": 100,
+        "rate": 0.67,
+        "low": 0.573053,
+        "high": 0.754369
+      },
+      "S_noGguf": {
+        "k": 7,
+        "n": 16,
+        "rate": 0.4375,
+        "low": 0.230987,
+        "high": 0.668214
+      },
+      "unknownOtherCnTokens": 0,
+      "split": {
+        "S_baselineJudged": {
+          "k": 17,
+          "n": 60,
+          "rate": 0.283333,
+          "low": 0.185068,
+          "high": 0.407673
+        },
+        "structureOnlyJudged": 6,
+        "structureOnlyBlind": 6
+      },
+      "families": {
+        "gemma": 4,
+        "lfm": 1,
+        "llama": 36,
+        "mistral": 11,
+        "qwen": 18
+      }
+    },
+    {
+      "sample": "B2",
+      "models": 100,
+      "unmatched": 0,
+      "fetchedOk": 100,
+      "judged": 64,
+      "unknown": 36,
+      "S": {
+        "k": 20,
+        "n": 64,
+        "rate": 0.3125,
+        "low": 0.212311,
+        "high": 0.433923
+      },
+      "populationS": {
+        "min": 0.2,
+        "max": 0.56,
+        "judgedShare": 0.64
+      },
+      "M1": {
+        "k": 9,
+        "n": 64,
+        "rate": 0.140625,
+        "low": 0.075786,
+        "high": 0.246163
+      },
+      "M2": {
+        "k": 17,
+        "n": 64,
+        "rate": 0.265625,
+        "low": 0.172964,
+        "high": 0.384829
+      },
+      "M2missing": 17,
+      "M2mismatch": 0,
+      "M3": {
+        "k": 36,
+        "n": 100,
+        "rate": 0.36,
+        "low": 0.272712,
+        "high": 0.457646
+      },
+      "M4": {
+        "k": 15,
+        "n": 100,
+        "rate": 0.15,
+        "low": 0.09306,
+        "high": 0.232836
+      },
+      "ggufShare": {
+        "k": 30,
+        "n": 100,
+        "rate": 0.3,
+        "low": 0.218949,
+        "high": 0.395849
+      },
+      "S_noGguf": {
+        "k": 13,
+        "n": 36,
+        "rate": 0.361111,
+        "low": 0.224756,
+        "high": 0.524249
+      },
+      "unknownOtherCnTokens": 0,
+      "split": {
+        "S_baselineJudged": {
+          "k": 3,
+          "n": 12,
+          "rate": 0.25,
+          "low": 0.088942,
+          "high": 0.532305
+        },
+        "structureOnlyJudged": 6,
+        "structureOnlyBlind": 6
+      },
+      "families": {
+        "exaone": 1,
+        "gemma": 2,
+        "glm": 1,
+        "granite": 4,
+        "lfm": 38,
+        "mistral": 1,
+        "nemotron": 2,
+        "phi": 1,
+        "qwen": 14
+      }
+    },
+    {
+      "sample": "A",
+      "models": 200,
+      "unmatched": 0,
+      "fetchedOk": 200,
+      "judged": 199,
+      "unknown": 1,
+      "S": null,
+      "populationS": null,
+      "M1": {
+        "k": 24,
+        "n": 199,
+        "rate": 0.120603,
+        "low": 0.082399,
+        "high": 0.173177
+      },
+      "M2": null,
+      "M2missing": null,
+      "M2mismatch": null,
+      "M3": {
+        "k": 1,
+        "n": 200,
+        "rate": 0.005,
+        "low": 0.000883,
+        "high": 0.027774
+      },
+      "M4": null,
+      "ggufShare": {
+        "k": 81,
+        "n": 200,
+        "rate": 0.405,
+        "low": 0.339378,
+        "high": 0.474203
+      },
+      "S_noGguf": null,
+      "unknownOtherCnTokens": 0,
+      "split": null,
+      "families": {
+        "deepseek": 40,
+        "exaone": 20,
+        "gemma": 20,
+        "llama": 20,
+        "mistral": 20,
+        "qwen": 79
+      }
+    }
+  ],
+  "overlap": {
+    "multiSample": 17,
+    "byPair": {
+      "C+A": 7,
+      "C+B2": 10
+    }
+  }
+}

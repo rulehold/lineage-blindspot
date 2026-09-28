@@ -1,0 +1,41 @@
+name: release
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: read
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Verify checksum
+        run: cd data && sha256sum -c summary.json.sha256
+      - name: Create release
+        run: gh release create "$GITHUB_REF_NAME" data/summary.json data/summary.json.sha256 blindspot-public.md --title "$GITHUB_REF_NAME" --notes-file CHANGELOG.md --verify-tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+  hf:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Stage dataset files
+        run: |
+          mkdir _hf
+          cp hf/README.md blindspot-public.md data/summary.json data/summary.json.sha256 _hf/
+          cd _hf && sha256sum -c summary.json.sha256
+      - run: pip install "huggingface_hub>=1.0,<2"
+      - name: Upload to Hugging Face
+        run: python -c "import os; from huggingface_hub import upload_folder; upload_folder(repo_id='rulehold/lineage-blindspot-v0', repo_type='dataset', folder_path='_hf', commit_message=os.environ['GITHUB_REF_NAME'], token=os.environ['HF_TOKEN'])"
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
