@@ -3,12 +3,12 @@ Copyright (c) 2026 Rulehold
 Data and documentation (data/, blindspot-public.md, README.md, hf/README.md)
 are licensed under the Creative Commons Attribution 4.0 International License
 (CC BY 4.0). Full legal code: https://creativecommons.org/licenses/by/4.0/legalcode
-Attribution: "Rulehold, lineage-blindspot v0.1.0" with a link to this repository.
+Attribution: "Rulehold, lineage-blindspot <version>" with a link to this repository.
 
 The underlying model metadata was retrieved from the Hugging Face public Hub API.
 Only aggregate counts derived from it are included here.
 
-Code (.github/workflows/release.yml) is licensed under the MIT License:
+Code (.github/workflows/release.yml, .github/ISSUE_TEMPLATE/) is licensed under the MIT License:
 
 MIT License
 

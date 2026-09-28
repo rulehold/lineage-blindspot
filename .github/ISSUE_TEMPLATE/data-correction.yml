@@ -1,0 +1,29 @@
+name: Data correction
+description: Report an error in the aggregates, the report or the reproduction steps
+title: "[correction] "
+labels: ["topic:correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Please point to the file and field (for example `data/summary.json` → sample C → `M3`) or the table row.
+        Please do not include personal information.
+  - type: input
+    id: version
+    attributes:
+      label: Release
+      placeholder: v0.1.1
+    validations:
+      required: true
+  - type: textarea
+    id: where
+    attributes:
+      label: Where
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What looks wrong, and what you expected
+    validations:
+      required: true

@@ -1,0 +1,31 @@
+name: Sample request
+description: Ask for a new sample or filter to be measured in a future snapshot
+title: "[sample] "
+labels: ["topic:sample"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We publish aggregates only. We do not publish or send lineage verdicts for individual models.
+        Please do not include personal information.
+  - type: textarea
+    id: sample
+    attributes:
+      label: Sample definition
+      description: Which models should be measured? A Hugging Face Hub query (for example `pipeline_tag=text-generation&search=...`), a language tag, or a description.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it matters to you
+      description: Optional. What decision would this number help with?
+  - type: dropdown
+    id: role
+    attributes:
+      label: Your context
+      options:
+        - Security / governance team
+        - Model developer or publisher
+        - Researcher
+        - Other

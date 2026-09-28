@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use these aggregates, please cite them as below."
+title: "lineage-blindspot: model-lineage blind spots on Hugging Face (aggregates)"
+type: dataset
+authors:
+  - name: Rulehold
+    email: hello@rulehold.com
+version: 0.1.1
+date-released: 2026-09-28
+license: CC-BY-4.0
+repository-code: "https://github.com/rulehold/lineage-blindspot"
+url: "https://huggingface.co/datasets/rulehold/lineage-blindspot-v0"
+keywords:
+  - model lineage
+  - Hugging Face
+  - base_model
+  - AI supply chain
